@@ -41,3 +41,51 @@ if (heroBg) {
     if (y < 800) heroBg.style.transform = `translateY(${y * 0.15}px)`;
   }, { passive: true });
 }
+
+// Audit form: realistic loader + success state
+const auditForm      = document.getElementById('auditForm');
+const auditSubmit    = document.getElementById('auditSubmit');
+const auditSuccess   = document.getElementById('auditSuccess');
+const auditFineprint = document.getElementById('auditFineprint');
+const auditName      = document.getElementById('auditName');
+
+if (auditForm) {
+  auditForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name     = auditForm.elements.name.value.trim();
+    const email    = auditForm.elements.email.value.trim();
+    const business = auditForm.elements.business.value.trim();
+
+    if (!name || !email || !business) {
+      auditForm.querySelectorAll('input').forEach(i => {
+        if (!i.value.trim()) i.style.borderColor = '#ff6b6b';
+      });
+      return;
+    }
+
+    auditSubmit.classList.add('is-loading');
+    auditSubmit.disabled = true;
+    auditForm.querySelectorAll('input').forEach(i => i.disabled = true);
+
+    const delay = 1400 + Math.random() * 700;
+
+    setTimeout(() => {
+      auditForm.classList.add('is-leaving');
+
+      setTimeout(() => {
+        auditForm.hidden = true;
+        if (auditFineprint) auditFineprint.hidden = true;
+
+        const firstName = name.split(' ')[0];
+        if (auditName) auditName.textContent = firstName;
+
+        auditSuccess.hidden = false;
+      }, 350);
+    }, delay);
+  });
+
+  auditForm.querySelectorAll('input').forEach(i => {
+    i.addEventListener('input', () => { i.style.borderColor = ''; });
+  });
+}

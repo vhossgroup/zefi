@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Zefi Agency — Email Signature (Oliver Henry)</title>
+<style>
+  body { background:#f4f4f5; font-family:Arial,sans-serif; padding:40px; color:#0a0a0c; }
+  .preview-card { background:#ffffff; border:1px solid #e5e5e7; border-radius:14px; padding:32px; max-width:680px; margin:0 auto; box-shadow:0 4px 20px -8px rgba(0,0,0,0.08); }
+  .preview-card h2 { margin:0 0 8px; font-size:14px; color:#6c6c78; text-transform:uppercase; letter-spacing:0.1em; }
+  .preview-card hr { border:0; border-top:1px solid #e5e5e7; margin:24px 0; }
+  .copy-btn { display:inline-block; margin-top:24px; background:#0a0a0c; color:#e9f35c; padding:12px 22px; border-radius:999px; font-weight:600; font-size:13px; cursor:pointer; border:0; font-family:inherit; }
+  .copy-btn:hover { background:#1a1a22; }
+  .note { font-size:13px; color:#6c6c78; line-height:1.5; margin-top:24px; }
+  code { background:#f4f4f5; padding:2px 6px; border-radius:4px; font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="preview-card">
+  <h2>Live preview</h2>
+
+  <!-- ============================================================ -->
+  <!--  ZEFI AGENCY EMAIL SIGNATURE — OLIVER HENRY                  -->
+  <!--  Copy everything between the START / END comments below.     -->
+  <!-- ============================================================ -->
+
+  <!-- START SIGNATURE -->
+  <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; font-family:Arial, Helvetica, sans-serif; color:#0a0a0c; line-height:1.4;">
+    <tr>
+      <!-- Logo column -->
+      <td valign="top" style="padding-right:20px; border-right:2px solid #e9f35c;">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="center" valign="middle" style="background:#e9f35c; width:64px; height:64px; border-radius:10px; font-family:Arial, Helvetica, sans-serif; font-size:34px; font-weight:800; color:#0a0a0c; line-height:64px;">
+              Z
+            </td>
+          </tr>
+        </table>
+      </td>
+
+      <!-- Details column -->
+      <td valign="top" style="padding-left:20px;">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:700; color:#0a0a0c; padding-bottom:2px;">
+              Oliver Henry
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#6c6c78; padding-bottom:10px;">
+              Reputation Specialist · Zefi Agency
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#0a0a0c; padding-bottom:3px;">
+              <a href="tel:+61474725545" style="color:#0a0a0c; text-decoration:none;">
+                <span style="color:#9b9ba5;">P&nbsp;&nbsp;</span>+61&nbsp;474&nbsp;725&nbsp;545
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#0a0a0c; padding-bottom:3px;">
+              <a href="mailto:oliver@zefiagency.com" style="color:#0a0a0c; text-decoration:none;">
+                <span style="color:#9b9ba5;">E&nbsp;&nbsp;</span>oliver@zefiagency.com
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#0a0a0c; padding-bottom:10px;">
+              <a href="https://zefiagency.com" style="color:#0a0a0c; text-decoration:none;">
+                <span style="color:#9b9ba5;">W&nbsp;&nbsp;</span>zefiagency.com
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-family:Arial, Helvetica, sans-serif; font-size:11px; color:#9b9ba5; letter-spacing:0.04em;">
+              Remove. Suppress. Grow. Reputation built for the world's brands.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!-- END SIGNATURE -->
+
+  <hr />
+
+  <p class="note">
+    <strong>How to install:</strong> click <em>Copy signature HTML</em> below,
+    then paste the copied block into your email client's HTML signature
+    editor. See the per-client steps below the page.
+  </p>
+
+  <button class="copy-btn" id="copyBtn">Copy signature HTML</button>
+  <p class="note" id="copyMsg" style="display:none; color:#0a7d1a;"><strong>Copied.</strong> Now paste it into your email client.</p>
+</div>
+
+<script>
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const start = document.documentElement.outerHTML.indexOf('<!-- START SIGNATURE -->');
+    const end   = document.documentElement.outerHTML.indexOf('<!-- END SIGNATURE -->') + '<!-- END SIGNATURE -->'.length;
+    const html  = document.documentElement.outerHTML.slice(start, end);
+    try {
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          'text/html': new Blob([html], { type: 'text/html' }),
+          'text/plain': new Blob([html], { type: 'text/plain' })
+        })
+      ]);
+      document.getElementById('copyMsg').style.display = 'block';
+    } catch (e) {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = html;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      document.getElementById('copyMsg').style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
